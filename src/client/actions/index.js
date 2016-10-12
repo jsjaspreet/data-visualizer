@@ -1,45 +1,35 @@
 import {
-  IS_FETCHING,
-  GET_URL_DATA,
-  SUBMIT_URL
+  SET_FETCH_STATE,
+  SET_DATA_VIZ
 } from './types'
 
+// Action Creator for updating fetch state
 export function changeFetchState(fetchState) {
   return {
-    type: IS_FETCHING,
+    type: SET_FETCH_STATE,
     payload: fetchState
   }
 }
 
-export function postUrl(link) {
-  const result = axios.post('/api/links', { link })
-  return {
-    type: SUBMIT_URL,
-    payload: result
-  }
-}
-
-
-export function submitURL(url) {
+// Action Creator for updating data visualization
+export function setVizData(vizData) {
+  // Thunk
   return function(dispatch) {
+    // Set app state to fetching
     dispatch(changeFetchState(true))
 
-    setTimeout(() => {
-      dispatch(postUrl(url))
-      // Janky way of waiting for the PG write to be committed
-      // better to do optimistic UI updates
-      setTimeout(()=> {
-        dispatch(getUrlData())
-        dispatch(changeFetchState(false))
-      }, 300)
-    }, 800)
+    // Simulate load by utilizing setTimeout
+    setTimeout(()=> {
+
+      // Dispatch an event whose payload contains the new visualization data
+      dispatch({
+        type: SET_DATA_VIZ,
+        payload: vizData
+      })
+
+      // Update app state to no longer fetching
+      dispatch(changeFetchState(false))
+    }, 1000)
   }
 }
 
-export function getUrlData() {
-  const results = axios.get('/api/links')
-  return {
-    type: GET_URL_DATA,
-    payload: results
-  }
-}
