@@ -1,6 +1,6 @@
-# Link Shortener
+# Data Visualizer
 
-Link Shortener app built using React on the front end, Redux for app state management, Postgres for persistence, and an Express server for routing. Docker is also used to bring up the postgres database with configured table and prepopulated dummy row entry.
+Data Visualization app built using React and primarily Recharts on the front end, Redux for app state management, Express server for routing.
 
 ## Prerequisites
 - Docker
@@ -9,7 +9,6 @@ Link Shortener app built using React on the front end, Redux for app state manag
 ## Running the app
 
 ```
-./bootstrap_pg.sh
 npm i
 npm run dev
 ```
