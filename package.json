@@ -1,5 +1,5 @@
 {
-  "name": "Data Visualizer",
+  "name": "data-visualizer",
   "author": "Jaspreet Singh",
   "version": "0.0.0",
   "description": "",
@@ -15,6 +15,7 @@
     "watch:server": "webpack --config config/webpack/server.js --watch",
     "watch:client": "webpack --config config/webpack/client.js --watch"
   },
+  "private": true,
   "license": "ISC",
   "devDependencies": {
     "babel": "^6.5.2",
@@ -40,12 +41,14 @@
   "dependencies": {
     "express": "^4.14.0",
     "jade": "^1.11.0",
+    "lodash": "^4.16.4",
     "material-ui": "^0.16.0",
     "pug": "^2.0.0-beta6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^1.0.0",
+    "recharts": "^0.15.2",
     "redux": "^3.6.0",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
