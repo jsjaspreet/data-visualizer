@@ -44,7 +44,7 @@ class DataInputForm extends Component {
                    value={this.state[rangeKey]}
                    fullWidth
                    multiLine
-                   floatingLabelText={"Enter Range Value"}/>
+                   hintText={"Enter Range"}/>
       </div>
     )
   }
