@@ -19,25 +19,35 @@ class DataInputForm extends Component {
   }
 
   handleTextChange(event, stateKey) {
+    // Create a state update
     let stateUpdate = {}
     stateUpdate[stateKey] = event.target.value
+    // Call set update
     this.setState(stateUpdate)
   }
 
   handleSubmit(event) {
+    // Prevent page from refreshing
     event.preventDefault()
+    // Dispatch the set Data Viz action so DataVisualization component can render
     this.props.setVizData(this.state)
   }
 
   handleRangeAddition() {
+    // Range key is a unique identifier for identifying multiple ranges
     const rangeKey = `range${this.state.rangeAdditions.length + 1}`
+    // Generate an input for an additional range set
     const rangeAddition = this.generateRangeField(rangeKey)
+    // Create state update
     const stateUpdate = {}
+    // Concat the range addition to the current range additions
     stateUpdate.rangeAdditions = this.state.rangeAdditions.concat(rangeAddition)
+    // Update component state with the state update
     this.setState(stateUpdate)
   }
 
   generateRangeField(rangeKey) {
+    // Use the range key to create a unique input field for an additional range set
     return (
       <div key={rangeKey}>
         <TextField onChange={(event)=>this.handleTextChange(event, rangeKey)}
@@ -51,9 +61,11 @@ class DataInputForm extends Component {
 
   render() {
     const { isFetching } = this.props
+    // Components for fetch state
     const VisualizeButton = <RaisedButton type="submit" label="Visualize" primary={true} style={{ margin: 12 }}/>
     const LoadingComponent = <CircularProgress />
-    console.log(this.state)
+
+    // Return a form that allows user to input data and click a submit button to visualize that data
     return (
       <form onSubmit={this.handleSubmit} style={{ paddingLeft: 20 }}>
         <div>
@@ -71,6 +83,7 @@ class DataInputForm extends Component {
                      floatingLabelText={"Range"}/>
         </div>
         {
+          // Render rest of the range additions being made
           this.state.rangeAdditions
         }
         <div style={{ textAlign: 'center', paddingTop: 10 }}>
@@ -80,6 +93,7 @@ class DataInputForm extends Component {
         </div>
         <div style={{ textAlign: 'center', paddingTop: 40 }}>
           {
+            // If we are fetching, show the loading component, otherwise show Visualize Button
             isFetching ?
             LoadingComponent :
             VisualizeButton
