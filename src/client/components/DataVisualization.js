@@ -16,6 +16,8 @@ class DataVisualization extends Component {
     }
     // Compute number of ranges, parse domain and ranges since they are passed as strings
     const numRanges = dataViz.rangeAdditions.length + 1
+    // Get colors for each range set
+    const colors = colorScale.colors(numRanges)
     const domain = JSON.parse(dataViz.domain)
     const ranges = []
     // For each range string, parse and add to a range collection
@@ -41,10 +43,7 @@ class DataVisualization extends Component {
                                                    type="monotone"
                                                    dataKey={`range${index}`}
                                                    strokeWidth={2}
-                                                   stroke={
-                                                     colorScale((1 + index) / numRanges)
-                                                       .hex()
-                                                   }/>))
+                                                   stroke={colors[index]}/>))
 
     // Render a line chart
     return (
