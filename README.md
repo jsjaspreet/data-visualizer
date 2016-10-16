@@ -2,7 +2,7 @@
 
 Data Visualization app built using React and primarily Recharts on the front end, Redux for app state management, Express server for routing.
 
-![Data_Viz_App](http://imgur.com/1EJrzhn)
+![Data_Viz_App](https://s18.postimg.org/4wkhjzomh/real_data_viz.png)
 
 ## Prerequisites
 - Node > 6.0
